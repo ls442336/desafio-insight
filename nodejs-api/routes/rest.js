@@ -2,7 +2,7 @@ const express = require('express');
 const BusesController = require('../controllers/buses');
 const StopsController = require('../controllers/stops');
 const HomeController = require('../controllers/home');
-
+const BusesApiController = require('../controllers/busesApi')
 module.exports = app => {
     const APIRouter = new express.Router();
 
@@ -13,6 +13,7 @@ module.exports = app => {
     APIRouter.get('/buses-stops/previsions/:stopId', StopsController.getStopPrevisions);
     APIRouter.get('/buses-stops/:line/:direction', StopsController.getStopsByLineAndDirection);
     APIRouter.get('/buses', BusesController.getAllBuses);
+    APIRouter.get('/sptrans-version', BusesApiController.getApiVersion);
 
     app.use('/api/sp', APIRouter);
     app.get('/*', HomeController.getHomePage);
