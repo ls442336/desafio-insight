@@ -6,6 +6,8 @@ import { Table, Tabs, Tooltip, Button } from 'antd';
 import { useHistory } from 'react-router';
 import StopIcon from '../../assets/stop-icon.png';
 import BusIcon from '../../assets/onibus-icon-rounded.png';
+import NotFoundMessage from './NotFoundMessage'
+
 import { BusLine, Bus, BusDirection, Stop } from '../../types';
 import "./styles.scss";
 
@@ -126,10 +128,11 @@ const PrevisionPanel: FunctionComponent<PrevisionPanelProps> = ({ previsions, st
             </div>
             <Tabs
                 size='small'
-                style={{ height: panelHeight - panelHeaderHeight }}
+                style={{ height: panelHeight - panelHeaderHeight}}
                 tabPosition={'left'}
                 animated={true}
             >
+                <NotFoundMessage show={previsions.length == 0}></NotFoundMessage>
                 {previsions.map(busLine => (
                     <TabPane
                         key={busLine.lineName}
