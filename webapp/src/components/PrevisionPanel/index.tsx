@@ -132,7 +132,9 @@ const PrevisionPanel: FunctionComponent<PrevisionPanelProps> = ({ previsions, st
                 tabPosition={'left'}
                 animated={true}
             >
+                
                 <NotFoundMessage show={previsions.length == 0}></NotFoundMessage>
+
                 {previsions.map(busLine => (
                     <TabPane
                         key={busLine.lineName}
